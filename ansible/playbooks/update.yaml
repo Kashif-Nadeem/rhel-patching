@@ -78,7 +78,7 @@
         username: "{{ smtp_user }}"
         password: "{{ smtp_pass }}"
         subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
-        from: 'svc_cls@modad.com'
+        from: "{{ smtp_user }}"
         body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
         to: '{{ app_email }}'
         charset: utf8
@@ -103,7 +103,7 @@
         username: "{{ smtp_user }}"
         password: "{{ smtp_pass }}"
         subject: 'OS patching for {{ ansible_hostname }} has completed.'
-        from: 'svc_cls@modad.com'
+        from: "{{ smtp_user }}"
         body: "Automated OS patching for {{ ansible_hostname }} has completed."
         to: '{{ app_email  }}'
         charset: utf8
@@ -125,7 +125,7 @@
         username: "{{ smtp_user }}"
         password: "{{ smtp_pass }}"
         subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
-        from: 'svc_cls@modad.com'
+        from: "{{ smtp_user }}"
         body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
         to: '{{ app_email }}'
         charset: utf8
@@ -150,7 +150,7 @@
         username: "{{ smtp_user }}"
         password: "{{ smtp_pass }}"
         subject: 'OS patching for {{ ansible_hostname }} has completed.'
-        from: 'svc_cls@modad.com'
+        from: "{{ smtp_user }}"
         body: "Automated OS patching for {{ ansible_hostname }} has completed."
         to: '{{ app_email  }}'
         charset: utf8
@@ -172,7 +172,7 @@
         username: "{{ smtp_user }}"
         password: "{{ smtp_pass }}"
         subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
-        from: 'svc_cls@modad.com'
+        from: "{{ smtp_user }}"
         body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
         to: '{{ app_email }}'
         charset: utf8
@@ -197,7 +197,7 @@
         username: "{{ smtp_user }}"
         password: "{{ smtp_pass }}"
         subject: 'OS patching for {{ ansible_hostname }} has completed.'
-        from: 'svc_cls@modad.com'
+        from: "{{ smtp_user }}"
         body: "Automated OS patching for {{ ansible_hostname }} has completed."
         to: '{{ app_email  }}'
         charset: utf8
@@ -219,7 +219,7 @@
         username: "{{ smtp_user }}"
         password: "{{ smtp_pass }}"
         subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
-        from: 'svc_cls@modad.com'
+        from: "{{ smtp_user }}"
         body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
         to: '{{ app_email }}'
         charset: utf8
@@ -244,7 +244,7 @@
         username: "{{ smtp_user }}"
         password: "{{ smtp_pass }}"
         subject: 'OS patching for {{ ansible_hostname }} has completed.'
-        from: 'svc_cls@modad.com'
+        from: "{{ smtp_user }}"
         body: "Automated OS patching for {{ ansible_hostname }} has completed."
         to: '{{ app_email  }}'
         charset: utf8
