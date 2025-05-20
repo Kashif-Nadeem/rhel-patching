@@ -71,19 +71,19 @@
   ##########################################################
   # Send notification email at start of change to app teams
   ##########################################################
-  pre_tasks:
-    - community.general.mail:
-        host: "{{ smtp_host }}"
-        port: "{{ smtp_port }}"
-        username: "{{ smtp_user }}"
-        password: "{{ smtp_pass }}"
-        subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
-        from: "{{ smtp_user }}"
-        body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
-        to: '{{ app_email }}'
-        charset: utf8
-      delegate_to: localhost
-      tags: mail
+#  pre_tasks:
+#    - community.general.mail:
+#        host: "{{ smtp_host }}"
+#        port: "{{ smtp_port }}"
+#        username: "{{ smtp_user }}"
+#        password: "{{ smtp_pass }}"
+#        subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
+#        from: "{{ smtp_user }}"
+#        body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
+#        to: '{{ app_email }}'
+#        charset: utf8
+#      delegate_to: localhost
+#      tags: mail
 
   #########################################################
   # Execute update procedures
@@ -96,19 +96,19 @@
   ##########################################################
   # Send notifiction of completion
   ##########################################################
-  post_tasks:
-    - community.general.mail:
-        host: "{{ smtp_host }}"
-        port: "{{ smtp_port }}"
-        username: "{{ smtp_user }}"
-        password: "{{ smtp_pass }}"
-        subject: 'OS patching for {{ ansible_hostname }} has completed.'
-        from: "{{ smtp_user }}"
-        body: "Automated OS patching for {{ ansible_hostname }} has completed."
-        to: '{{ app_email  }}'
-        charset: utf8
-      delegate_to: localhost
-      tags: mail 
+ # post_tasks:
+ #   - community.general.mail:
+ #       host: "{{ smtp_host }}"
+ #       port: "{{ smtp_port }}"
+ #       username: "{{ smtp_user }}"
+ #       password: "{{ smtp_pass }}"
+ #       subject: 'OS patching for {{ ansible_hostname }} has completed.'
+ #       from: "{{ smtp_user }}"
+ #       body: "Automated OS patching for {{ ansible_hostname }} has completed."
+ #       to: '{{ app_email  }}'
+ #       charset: utf8
+ #     delegate_to: localhost
+ #     tags: mail 
 
 - name: Performing yum update on host(s)
   hosts: group2
@@ -118,19 +118,19 @@
   ##########################################################
   # Send notification email at start of change to app teams
   ##########################################################
-  pre_tasks:
-    - community.general.mail:
-        host: "{{ smtp_host }}"
-        port: "{{ smtp_port }}"
-        username: "{{ smtp_user }}"
-        password: "{{ smtp_pass }}"
-        subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
-        from: "{{ smtp_user }}"
-        body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
-        to: '{{ app_email }}'
-        charset: utf8
-      delegate_to: localhost
-      tags: mail
+ # pre_tasks:
+ #   - community.general.mail:
+ #       host: "{{ smtp_host }}"
+ #       port: "{{ smtp_port }}"
+ #       username: "{{ smtp_user }}"
+ #       password: "{{ smtp_pass }}"
+ #       subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
+ #       from: "{{ smtp_user }}"
+ #       body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
+ #       to: '{{ app_email }}'
+ #       charset: utf8
+ #     delegate_to: localhost
+ #     tags: mail
 
   #########################################################
   # Execute update procedures
@@ -143,19 +143,19 @@
   ##########################################################
   # Send notifiction of completion
   ##########################################################
-  post_tasks:
-    - community.general.mail:
-        host: "{{ smtp_host }}"
-        port: "{{ smtp_port }}"
-        username: "{{ smtp_user }}"
-        password: "{{ smtp_pass }}"
-        subject: 'OS patching for {{ ansible_hostname }} has completed.'
-        from: "{{ smtp_user }}"
-        body: "Automated OS patching for {{ ansible_hostname }} has completed."
-        to: '{{ app_email  }}'
-        charset: utf8
-      delegate_to: localhost
-      tags: mail 
+ # post_tasks:
+ #   - community.general.mail:
+ #       host: "{{ smtp_host }}"
+ #       port: "{{ smtp_port }}"
+ #       username: "{{ smtp_user }}"
+ #       password: "{{ smtp_pass }}"
+ #       subject: 'OS patching for {{ ansible_hostname }} has completed.'
+ #       from: "{{ smtp_user }}"
+ ##       body: "Automated OS patching for {{ ansible_hostname }} has completed."
+#      to: '{{ app_email  }}'
+#        charset: utf8
+#      delegate_to: localhost
+#      tags: mail 
 
 - name: Performing yum update on host(s)
   hosts: noreboot
@@ -165,19 +165,19 @@
   ##########################################################
   # Send notification email at start of change to app teams
   ##########################################################
-  pre_tasks:
-    - community.general.mail:
-        host: "{{ smtp_host }}"
-        port: "{{ smtp_port }}"
-        username: "{{ smtp_user }}"
-        password: "{{ smtp_pass }}"
-        subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
-        from: "{{ smtp_user }}"
-        body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
-        to: '{{ app_email }}'
-        charset: utf8
-      delegate_to: localhost
-      tags: mail
+ # pre_tasks:
+ #   - community.general.mail:
+ #       host: "{{ smtp_host }}"
+ #       port: "{{ smtp_port }}"
+ #       username: "{{ smtp_user }}"
+ #       password: "{{ smtp_pass }}"
+ #       subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
+ #       from: "{{ smtp_user }}"
+ #       body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
+ #       to: '{{ app_email }}'
+ #       charset: utf8
+ #     delegate_to: localhost
+ #     tags: mail
 
   #########################################################
   # Execute update procedures
@@ -190,19 +190,19 @@
   ##########################################################
   # Send notifiction of completion
   ##########################################################
-  post_tasks:
-    - community.general.mail:
-        host: "{{ smtp_host }}"
-        port: "{{ smtp_port }}"
-        username: "{{ smtp_user }}"
-        password: "{{ smtp_pass }}"
-        subject: 'OS patching for {{ ansible_hostname }} has completed.'
-        from: "{{ smtp_user }}"
-        body: "Automated OS patching for {{ ansible_hostname }} has completed."
-        to: '{{ app_email  }}'
-        charset: utf8
-      delegate_to: localhost
-      tags: mail 
+ # post_tasks:
+ #   - community.general.mail:
+ #       host: "{{ smtp_host }}"
+ #       port: "{{ smtp_port }}"
+ #       username: "{{ smtp_user }}"
+ #       password: "{{ smtp_pass }}"
+ #       subject: 'OS patching for {{ ansible_hostname }} has completed.'
+ #       from: "{{ smtp_user }}"
+ #       body: "Automated OS patching for {{ ansible_hostname }} has completed."
+ #       to: '{{ app_email  }}'
+ #       charset: utf8
+ #     delegate_to: localhost
+ #     tags: mail 
 
 - name: Performing yum update on satellite servers
   hosts: satellite
@@ -212,19 +212,19 @@
   ##########################################################
   # Send notification email at start of change to app teams
   ##########################################################
-  pre_tasks:
-    - community.general.mail:
-        host: "{{ smtp_host }}"
-        port: "{{ smtp_port }}"
-        username: "{{ smtp_user }}"
-        password: "{{ smtp_pass }}"
-        subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
-        from: "{{ smtp_user }}"
-        body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
-        to: '{{ app_email }}'
-        charset: utf8
-      delegate_to: localhost
-      tags: mail
+#  pre_tasks:
+#    - community.general.mail:
+#        host: "{{ smtp_host }}"
+#        port: "{{ smtp_port }}"
+#        username: "{{ smtp_user }}"
+#        password: "{{ smtp_pass }}"
+#        subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
+#        from: "{{ smtp_user }}"
+#        body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
+#        to: '{{ app_email }}'
+#        charset: utf8
+#      delegate_to: localhost
+#      tags: mail
 
   #########################################################
   # Execute update procedures
@@ -237,17 +237,17 @@
   ##########################################################
   # Send notifiction of completion
   ##########################################################
-  post_tasks:
-    - community.general.mail:
-        host: "{{ smtp_host }}"
-        port: "{{ smtp_port }}"
-        username: "{{ smtp_user }}"
-        password: "{{ smtp_pass }}"
-        subject: 'OS patching for {{ ansible_hostname }} has completed.'
-        from: "{{ smtp_user }}"
-        body: "Automated OS patching for {{ ansible_hostname }} has completed."
-        to: '{{ app_email  }}'
-        charset: utf8
-      delegate_to: localhost
-      tags: mail
+#  post_tasks:
+#    - community.general.mail:
+#        host: "{{ smtp_host }}"
+#        port: "{{ smtp_port }}"
+#        username: "{{ smtp_user }}"
+#        password: "{{ smtp_pass }}"
+#        subject: 'OS patching for {{ ansible_hostname }} has completed.'
+#        from: "{{ smtp_user }}"
+#        body: "Automated OS patching for {{ ansible_hostname }} has completed."
+#        to: '{{ app_email  }}'
+#        charset: utf8
+#      delegate_to: localhost
+#      tags: mail
 
