@@ -1,0 +1,26 @@
+name: Automated RHEL Patching
+
+on:
+  workflow_dispatch:       # Allows manual trigger from GitHub UI
+  push:
+    branches:
+      - main               # Runs on push to main (or change to your default branch)
+
+jobs:
+  patch:
+    runs-on: self-hosted   # Use your on-prem/cloud GitHub runner
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Ansible
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ansible
+
+      - name: Run Ansible Playbook
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: 'False'
+        run: |
+          ansible-playbook playbooks/update.yaml -i inventory/hosts
