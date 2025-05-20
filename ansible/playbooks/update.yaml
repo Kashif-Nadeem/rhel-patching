@@ -14,36 +14,44 @@
     svc_cls_dir: /opt/home/svc_cls
 
   tasks:
+    - name: Ensure destination directory exists
+      file:
+        path: /opt/home/svc_cls
+        state: directory
+        owner: svc_ansible
+        group: svc_ansible
+        mode: '0755'
+
     - name: Copy pre_update.sh to remote host
       copy:
         src: "{{ playbook_dir }}/../scripts/pre_update.sh"
         dest: "{{ svc_cls_dir }}/pre_update.sh"
-        owner: root
-        group: root
+        owner: svc_ansible
+        group: svc_ansible
         mode: '0755'
 
     - name: Copy post_update.sh to remote host
       copy:
         src: "{{ playbook_dir }}/../scripts/post_update.sh"
         dest: "{{ svc_cls_dir }}/post_update.sh"
-        owner: root
-        group: root
+        owner: svc_ansible
+        group: svc_ansible
         mode: '0755'
 
     - name: Copy env_verify.sh to remote host
       copy:
         src: "{{ playbook_dir }}/../scripts/env_verify.sh"
         dest: "{{ svc_cls_dir }}/env_verify.sh"
-        owner: root
-        group: root
+        owner: svc_ansible
+        group: svc_ansible
         mode: '0755'
 
     - name: Copy post_update_conf.env to remote host
       copy:
         src: "{{ playbook_dir }}/../scripts/post_update_conf.env"
         dest: "{{ svc_cls_dir }}/post_update_conf.env"
-        owner: root
-        group: root
+        owner: svc_ansible
+        group: svc_ansible
         mode: '0644'
 
 # Once the scripts are coppied to the remote host
