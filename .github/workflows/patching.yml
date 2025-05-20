@@ -23,4 +23,4 @@ jobs:
         env:
           ANSIBLE_HOST_KEY_CHECKING: 'False'
         run: |
-          ansible-playbook playbooks/update.yaml -i inventory/hosts
+          ansible-playbook ansible/playbooks/update.yaml -i ansible/inventory/hosts
