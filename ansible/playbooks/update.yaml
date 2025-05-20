@@ -1,0 +1,213 @@
+---
+#------------------------------------------------------------------------------
+# Description: Playbook to perform 'yum update' on selected hosts.
+#        NOTE: This playbook will also reboot hosts if kernel is updated.
+#------------------------------------------------------------------------------
+
+# First lets copy the scripts to each remote host
+
+---
+- name: Automated RHEL Patching Playbook
+  hosts: all
+  become: yes
+
+  vars:
+    svc_cls_dir: /opt/home/svc_cls
+
+  tasks:
+    - name: Copy pre_update.sh to remote host
+      copy:
+        src: "{{ playbook_dir }}/../scripts/pre_update.sh"
+        dest: "{{ svc_cls_dir }}/pre_update.sh"
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Copy post_update.sh to remote host
+      copy:
+        src: "{{ playbook_dir }}/../scripts/post_update.sh"
+        dest: "{{ svc_cls_dir }}/post_update.sh"
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Copy env_verify.sh to remote host
+      copy:
+        src: "{{ playbook_dir }}/../scripts/env_verify.sh"
+        dest: "{{ svc_cls_dir }}/env_verify.sh"
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Copy post_update_conf.env to remote host
+      copy:
+        src: "{{ playbook_dir }}/../scripts/post_update_conf.env"
+        dest: "{{ svc_cls_dir }}/post_update_conf.env"
+        owner: root
+        group: root
+        mode: '0644'
+
+  roles:
+    - pre_update
+    - yum_update
+    - post_update
+
+# Once the scripts are coppied to the remote host
+# Performing update on the hosts
+
+- name: Performing yum update on host(s)
+  hosts: group1
+  become: yes
+  any_errors_fatal: false
+
+  ##########################################################
+  # Send notification email at start of change to app teams
+  ##########################################################
+  pre_tasks:
+    - mail:
+        subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
+        from: 'svc_cls@{{ ansible_fqdn }}'
+        body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
+        to: '{{ app_email }}'
+        charset: utf8
+      delegate_to: localhost
+      tags: mail
+
+  #########################################################
+  # Execute update procedures
+  #########################################################
+  roles:
+    - { role: pre_update, become: yes }
+    - { role: yum_update, become: yes }
+    - { role: post_update, become: yes }
+
+  ##########################################################
+  # Send notifiction of completion
+  ##########################################################
+  post_tasks:
+    - mail:
+        subject: 'OS patching for {{ ansible_hostname }} has completed.'
+        from: 'svc_cls@{{ ansible_fqdn }}'
+        body: "Automated OS patching for {{ ansible_hostname }} has completed."
+        to: '{{ app_email  }}'
+        charset: utf8
+      delegate_to: localhost
+      tags: mail 
+
+- name: Performing yum update on host(s)
+  hosts: group2
+  become: yes
+  any_errors_fatal: false
+
+  ##########################################################
+  # Send notification email at start of change to app teams
+  ##########################################################
+  pre_tasks:
+    - mail:
+        subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
+        from: 'svc_cls@{{ ansible_fqdn }}'
+        body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
+        to: '{{ app_email }}'
+        charset: utf8
+      delegate_to: localhost
+      tags: mail
+
+  #########################################################
+  # Execute update procedures
+  #########################################################
+  roles:
+    - { role: pre_update, become: yes }
+    - { role: yum_update, become: yes }
+    - { role: post_update, become: yes }
+
+  ##########################################################
+  # Send notifiction of completion
+  ##########################################################
+  post_tasks:
+    - mail:
+        subject: 'OS patching for {{ ansible_hostname }} has completed.'
+        from: 'svc_cls@{{ ansible_fqdn }}'
+        body: "Automated OS patching for {{ ansible_hostname }} has completed."
+        to: '{{ app_email  }}'
+        charset: utf8
+      delegate_to: localhost
+      tags: mail 
+
+- name: Performing yum update on host(s)
+  hosts: noreboot
+  become: yes
+  any_errors_fatal: false
+
+  ##########################################################
+  # Send notification email at start of change to app teams
+  ##########################################################
+  pre_tasks:
+    - mail:
+        subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
+        from: 'svc_cls@{{ ansible_fqdn }}'
+        body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
+        to: '{{ app_email }}'
+        charset: utf8
+      delegate_to: localhost
+      tags: mail
+
+  #########################################################
+  # Execute update procedures
+  #########################################################
+  roles:
+    - { role: pre_update, become: yes }
+    - { role: yum_update, become: yes }
+    - { role: post_update, become: yes }
+
+  ##########################################################
+  # Send notifiction of completion
+  ##########################################################
+  post_tasks:
+    - mail:
+        subject: 'OS patching for {{ ansible_hostname }} has completed.'
+        from: 'svc_cls@{{ ansible_fqdn }}'
+        body: "Automated OS patching for {{ ansible_hostname }} has completed."
+        to: '{{ app_email  }}'
+        charset: utf8
+      delegate_to: localhost
+      tags: mail 
+
+- name: Performing yum update on satellite servers
+  hosts: satellite
+  become: yes
+  any_errors_fatal: false
+
+  ##########################################################
+  # Send notification email at start of change to app teams
+  ##########################################################
+  pre_tasks:
+    - mail:
+        subject: 'OS patching for {{ ansible_hostname }} is beginning now.'
+        from: 'svc_cls@{{ ansible_fqdn }}'
+        body: 'Automated OS patching for {{ ansible_hostname }} is beginning now.'
+        to: '{{ app_email }}'
+        charset: utf8
+      delegate_to: localhost
+      tags: mail
+
+  #########################################################
+  # Execute update procedures
+  #########################################################
+  roles:
+    - { role: pre_update, become: yes }
+    - { role: yum_noreboot, become: yes }
+    - { role: post_update, become: yes }
+
+  ##########################################################
+  # Send notifiction of completion
+  ##########################################################
+  post_tasks:
+    - mail:
+        subject: 'OS patching for {{ ansible_hostname }} has completed.'
+        from: 'svc_cls@{{ ansible_fqdn }}'
+        body: "Automated OS patching for {{ ansible_hostname }} has completed."
+        to: '{{ app_email  }}'
+        charset: utf8
+      delegate_to: localhost
+      tags: mail
+

@@ -1,0 +1,12 @@
+---
+#------------------------------------------------------------------------------
+# Description: Perform yum update on selected hosts and compare running
+#              kernel version with last updated kernel version.
+#------------------------------------------------------------------------------
+
+- name: Updating all packages
+  yum:
+    name: '*'
+    state: latest
+  tags:
+    - skip_ansible_lint

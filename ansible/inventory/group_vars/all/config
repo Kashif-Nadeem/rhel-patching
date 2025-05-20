@@ -1,0 +1,8 @@
+# File name of pre and post patching scripts.
+pre_update_script: /opt/home/svc_cls/pre_update.sh
+post_update_script: /opt/home/svc_cls/post_update.sh
+post_update_conf: /opt/home/svc_cls/post_update_conf.env
+env_verify_dest: /opt/home/svc_cls/env_verify.sh
+
+# Comma-separated list of application team email addresses
+app_email: kshfnadeem@gmail.com
