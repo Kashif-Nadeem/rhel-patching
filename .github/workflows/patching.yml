@@ -22,5 +22,6 @@ jobs:
       - name: Run Ansible Playbook
         env:
           ANSIBLE_HOST_KEY_CHECKING: 'False'
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
         run: |
           ansible-playbook ansible/playbooks/update.yaml -i ansible/inventory/hosts
