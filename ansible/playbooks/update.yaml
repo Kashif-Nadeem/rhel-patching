@@ -7,7 +7,7 @@
 # First lets copy the scripts to each remote host
 
 - name: Automated RHEL Patching Playbook
-  hosts: all
+  hosts: group1
   become: yes
 
   vars:
@@ -45,11 +45,6 @@
         owner: root
         group: root
         mode: '0644'
-
-  roles:
-    - pre_update
-    - yum_update
-    - post_update
 
 # Once the scripts are coppied to the remote host
 # Performing update on the hosts
