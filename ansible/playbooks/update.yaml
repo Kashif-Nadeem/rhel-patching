@@ -61,8 +61,6 @@
   hosts: group1
   become: yes
   any_errors_fatal: false
-  env:
-    GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
   vars:
     smtp_host: smtp.gmail.com
     smtp_port: 587
