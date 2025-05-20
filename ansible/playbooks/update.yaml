@@ -6,7 +6,6 @@
 
 # First lets copy the scripts to each remote host
 
----
 - name: Automated RHEL Patching Playbook
   hosts: all
   become: yes
