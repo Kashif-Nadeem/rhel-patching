@@ -72,7 +72,7 @@
   # Send notification email at start of change to app teams
   ##########################################################
   pre_tasks:
-    - mail:
+    - community.general.mail:
         host: "{{ smtp_host }}"
         port: "{{ smtp_port }}"
         username: "{{ smtp_user }}"
@@ -97,7 +97,7 @@
   # Send notifiction of completion
   ##########################################################
   post_tasks:
-    - mail:
+    - community.general.mail:
         host: "{{ smtp_host }}"
         port: "{{ smtp_port }}"
         username: "{{ smtp_user }}"
@@ -119,7 +119,7 @@
   # Send notification email at start of change to app teams
   ##########################################################
   pre_tasks:
-    - mail:
+    - community.general.mail:
         host: "{{ smtp_host }}"
         port: "{{ smtp_port }}"
         username: "{{ smtp_user }}"
@@ -144,7 +144,7 @@
   # Send notifiction of completion
   ##########################################################
   post_tasks:
-    - mail:
+    - community.general.mail:
         host: "{{ smtp_host }}"
         port: "{{ smtp_port }}"
         username: "{{ smtp_user }}"
@@ -166,7 +166,7 @@
   # Send notification email at start of change to app teams
   ##########################################################
   pre_tasks:
-    - mail:
+    - community.general.mail:
         host: "{{ smtp_host }}"
         port: "{{ smtp_port }}"
         username: "{{ smtp_user }}"
@@ -191,7 +191,7 @@
   # Send notifiction of completion
   ##########################################################
   post_tasks:
-    - mail:
+    - community.general.mail:
         host: "{{ smtp_host }}"
         port: "{{ smtp_port }}"
         username: "{{ smtp_user }}"
@@ -213,7 +213,7 @@
   # Send notification email at start of change to app teams
   ##########################################################
   pre_tasks:
-    - mail:
+    - community.general.mail:
         host: "{{ smtp_host }}"
         port: "{{ smtp_port }}"
         username: "{{ smtp_user }}"
@@ -238,7 +238,7 @@
   # Send notifiction of completion
   ##########################################################
   post_tasks:
-    - mail:
+    - community.general.mail:
         host: "{{ smtp_host }}"
         port: "{{ smtp_port }}"
         username: "{{ smtp_user }}"
