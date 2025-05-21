@@ -21,7 +21,7 @@ function log_msg {
 function log_error {
   log_msg "ERROR" "$@"
 }
-Automating Red Hat Enterprise Linuc Patching with Ansible (Part 2 0f 2)
+# Automating Red Hat Enterprise Linuc Patching with Ansible (Part 2 0f 2)
 function log_info {
   log_msg "INFO " "$@"
 }
