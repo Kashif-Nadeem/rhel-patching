@@ -107,4 +107,4 @@ else
         sed -i "1s/^/$statusMsg\n\n/" "$logFile"
 fi
 
-/bin/mail -s "Post-patching report for $HOSTNAME" "$email"  < "$logFile"
+#/bin/mail -s "Post-patching report for $HOSTNAME" "$email"  < "$logFile"
