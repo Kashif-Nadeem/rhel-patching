@@ -61,12 +61,6 @@
   hosts: group1
   become: yes
   any_errors_fatal: false
-  vars:
-    smtp_host: smtp.gmail.com
-    smtp_port: 587
-    smtp_user: devuser@modad.com
-    smtp_pass: "{{ lookup('env', 'GMAIL_APP_PASSWORD') }}"
-    smtp_secure: starttls
 
   ##########################################################
   # Send notification email at start of change to app teams
