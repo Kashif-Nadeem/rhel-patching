@@ -40,7 +40,7 @@ This repository automates the OS patching and post-patching verification of Red 
 - Example:
     ```bash
     sudo useradd svc_ansible
-    sudo visudo   # Add: svc_cls ALL=(ALL) NOPASSWD:ALL
+    sudo visudo   # Add: svc_ansible ALL=(ALL) NOPASSWD:ALL
     ```
 ### 2. **Clone the repository and configure inventory**
 - Edit `ansible/inventory/hosts` to list all RHEL hosts to patch.
