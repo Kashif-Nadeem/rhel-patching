@@ -22,6 +22,12 @@ This repository automates the OS patching and post-patching verification of Red 
 ## Prerequisites
 
 - **GitHub repository** with a [self-hosted runner](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners) (recommended: Ubuntu).
+- **Dedicated service account:**  
+  Each RHEL host must have a dedicated *service account* (e.g., `svc_ansible` ) created for automation.  
+  This account should:
+    - Be able to log in via SSH (shell access enabled).
+    - Have passwordless `sudo` permissions for patching operations.
+    - Use the public key for service key in inventory/hosts file.
 - **Ansible** installed on the runner.
 - **SSH key-based authentication** set up from the runner to all target RHEL hosts.
 - **RHEL 8/9 servers** as targets, with `python3`, `sudo`, and optionally `mailx` installed (if using shell mail notifications).
@@ -30,25 +36,31 @@ This repository automates the OS patching and post-patching verification of Red 
 
 ## Setup and Usage
 
-### 1. **Clone the repository and configure inventory**
+### 1. **Create Service Account on Each RHEL Host**
+- Example:
+    ```bash
+    sudo useradd svc_ansible
+    sudo visudo   # Add: svc_cls ALL=(ALL) NOPASSWD:ALL
+    ```
+### 2. **Clone the repository and configure inventory**
 - Edit `ansible/inventory/hosts` to list all RHEL hosts to patch.
 - Add group or host variables as needed under `group_vars` or `host_vars`.
 
-### 2. **(Optional) Customize Pre/Post Scripts**
+### 3. **(Optional) Customize Pre/Post Scripts**
 - Edit scripts in `playbooks/scripts/` as required.
 - Remove or modify `env_verify.sh` and related calls if not needed for your environment.
 
-### 3. **Set up SSH keys**
+### 4. **Set up SSH keys**
 - Ensure your self-hosted runner can SSH into each target host as a user with `sudo` privileges.
 
-### 4. **Configure GitHub Actions**
+### 5. **Configure GitHub Actions**
 - The workflow is set up to:
     - Check out this repo
-    - Install Ansible and any required collections
+    - Install on-premise git-runner
     - Run the main playbook (`playbooks/update.yaml`)
     - Export any necessary secrets (e.g., for email notifications)
 
-### 5. **Trigger the Workflow**
+### 6. **Trigger the Workflow**
 - Go to the **Actions** tab in GitHub and run the `patch` workflow manually.
 
 ---
